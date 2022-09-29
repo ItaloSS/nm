@@ -9,6 +9,9 @@ class Num_meth():
     def RK4(self,Y_i,graf = False,name = "datos.dat"):
         t = self.ti
         Y = Y_i.copy() #pos,vel
+        l_t = []
+        l_x = []
+        l_y = []
         #1d vectors with 3 zeros
         K1 = np.zeros(Y_i.size) 
         K2 = np.zeros(Y_i.size)
@@ -30,8 +33,10 @@ class Num_meth():
                 #  add the step to file:
                 file.write("{0} {1} {2} \n".format(t,Y[0],Y[1]))
             else:
-                pass
+                l_t.append(t)
+                l_x.append(Y[0])
+                l_y.append(Y[1])
             t += self.dt
-        print(name)
         file.close()
-        #return 0
+        hola = [l_t,l_x,l_y]
+        return hola
